@@ -1,0 +1,48 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <script src=../js/phaser.js></script>
+<body>
+    <script>
+        //////player now slows to a stop/////
+
+        var height = 600;
+        var width = 800;
+        var player_speed = 200;
+
+        var game = new Phaser.Game(width, height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+        function preload() {
+            game.load.image('player', '../res/tux_mario.png');
+        }
+
+        function create() {
+            game.physics.startSystem(Phaser.Physics.ARCADE);
+            //place player on screen
+            player = game.add.sprite(10, height - 64, 'player');
+            //give player physics
+            game.physics.arcade.enable(player);
+    
+            //make sure player does not leave the level
+            player.body.collideWorldBounds = true;
+            cursors = game.input.keyboard.createCursorKeys();
+        }
+
+        function update() {
+            //makes player slow to a stop
+            if(player.body.velocity.x > 1){
+                player.body.velocity.x -= 1;
+            }else if(player.body.velocity.x < -1){
+                player.body.velocity.x += 1;
+            }
+
+            //moves player when keys are pressed
+            if(cursors.right.isDown){
+                player.body.velocity.x = player_speed;
+            }else if(cursors.left.isDown){
+                player.body.velocity.x = -player_speed;
+            } 
+        }        
+    </script>
+</body>
+</html>

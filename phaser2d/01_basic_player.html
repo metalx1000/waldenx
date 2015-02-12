@@ -1,0 +1,44 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <script src=../js/phaser.js></script>
+<body>
+    <script>
+        /////////Basic move player with arrow keys/////////
+
+        var height = 600;
+        var width = 800;
+        var player_speed = 200;
+
+        var game = new Phaser.Game(width, height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+        function preload() {
+            game.load.image('player', '../res/tux_mario.png');
+        }
+
+        function create() {
+            game.physics.startSystem(Phaser.Physics.ARCADE);
+            //place player on screen
+            player = game.add.sprite(10, height - 64, 'player');
+            //give player physics
+            game.physics.arcade.enable(player);
+    
+            //make sure player does not leave the level
+            player.body.collideWorldBounds = true;
+            cursors = game.input.keyboard.createCursorKeys();
+        }
+
+        function update() {
+            //moves player when keys are pressed
+            if(cursors.right.isDown){
+                player.body.velocity.x = player_speed;
+            }else if(cursors.left.isDown){
+                player.body.velocity.x = -player_speed;
+            }else{
+                //stops player when keys are let go
+                player.body.velocity.x = 0;
+            } 
+        }        
+    </script>
+</body>
+</html>
