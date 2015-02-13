@@ -25,7 +25,7 @@
     
             //make sure player does not leave the level
             player.body.collideWorldBounds = true;
-            cursors = game.input.keyboard.createCursorKeys();
+            keyboard = game.input.keyboard.createCursorKeys();
         }
 
         function update() {
@@ -37,9 +37,9 @@
             }
 
             //moves player when keys are pressed
-            if(cursors.right.isDown){
+            if(keyboard.right.isDown){
                 player.body.velocity.x = player_speed;
-            }else if(cursors.left.isDown){
+            }else if(keyboard.left.isDown){
                 player.body.velocity.x = -player_speed;
             } 
         }        

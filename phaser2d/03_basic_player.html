@@ -29,7 +29,7 @@
             player.body.gravity.y = 300;
 
             player.body.collideWorldBounds = true;
-            cursors = game.input.keyboard.createCursorKeys();
+            keyboard = game.input.keyboard.createCursorKeys();
         }
 
         function update() {
@@ -43,14 +43,14 @@
             }
 
             //moves player when keys are pressed
-            if(cursors.right.isDown){
+            if(keyboard.right.isDown){
                 player.body.velocity.x = player_speed;
-            }else if(cursors.left.isDown){
+            }else if(keyboard.left.isDown){
                 player.body.velocity.x = -player_speed;
             }
 
             //player can fly when up arrow is pressed
-            if(cursors.up.isDown){
+            if(keyboard.up.isDown){
                 player.body.velocity.y = player_fly;
             }
  
