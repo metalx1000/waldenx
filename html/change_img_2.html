@@ -1,0 +1,48 @@
+<html>
+<head>
+  <script src="../js/jquery.js"></script>
+  <script>
+    var img_red="../res/tux_ironman.png";
+    var img_blue="../res/tux_ironman_blue.png";
+    var img_green="../res/tux_ironman_green.png";
+    
+    function click1(){
+      $("#img1").attr('src', img_blue); 
+    }
+
+    function click2(){
+      $("#img1").attr('src', img_green); 
+      $("#img2").attr('src', img_blue); 
+    }    
+
+    function click3(){
+      $("#img1").attr('src', img_red); 
+      $("#img2").attr('src', img_green); 
+      $("#img3").attr('src', img_blue); 
+    } 
+
+    function all_red(){
+      $("img").attr('src', img_red); 
+    }
+
+    function all_green(){
+      $("img").attr('src', img_green); 
+    }
+
+    function all_blue(){
+      $("img").attr('src', img_blue); 
+    }
+
+
+  </script>
+</head>
+<body>
+  <img id="img1" src="../res/tux_ironman.png" onclick="click1()" >
+  <img id="img2" src="../res/tux_ironman.png" onclick="click2()" >
+  <img id="img3" src="../res/tux_ironman.png" onclick="click3()" >
+  <br>
+  <button onclick="all_red()">RED</button>
+  <button onclick="all_green()">GREEN</button>
+  <button onclick="all_blue()">BLUE</button>
+</body>
+</html>
